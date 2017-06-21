@@ -1,23 +1,31 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct point {
+struct circle {
     double x;
     double y;
     double radius;
 };
 
-float slopeOf(struct point A, struct point B) {
-    return (B.y - A.y) / (B.x - A.x);
+struct arc {
+    double a;
+    double b;
+};
+
+double arcLength(struct circle c, struct arc arc1){
+
+    double result = 2 * 3.14 * c.radius * ( (arc1.b - arc1.a ) / 360);
+
+    return result;
 }
 
 int main(void) {
-    struct pint A = {3, 5};
-    struct pint B = {0, 6};
-    struct pint C = {3, -5};
 
-    printf("slope between A and B is : %f\n", slopeOf(A, B));
-    printf("slope between A and C is : %f\n", slopeOf(A, C));
+    struct circle A = {0, 0, 10};
+    struct arc a = {0, 90};
+
+    printf("%f", arcLength(A, a));
+
 
     return 0;
 
